@@ -1,0 +1,44 @@
+
+#container{
+  display: flex;
+}
+li{
+  display: flex;
+  align-items:center;
+  justify-content: space-around;
+  } 
+content,add-food{
+    display:flex;
+    flex-direction:column;
+}
+#headerOpt{
+  display:flex;
+  justify-content: space-between;
+}
+li,add-food{  
+    border:1px solid;
+    padding:1rem;
+    margin: 1rem;
+}
+li:hover{
+  background-color: #f8f6f6;
+  }
+li figure{
+  height: 5rem;
+  width: 10rem;
+}
+li figure img{
+  max-height: 100%;
+  max-width: 100%;
+}
+content>*{
+  margin:2rem;
+  }
+add-food{
+  padding-bottom: 1rem;
+}
+input[type='number']{
+  width: 4rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+}
+

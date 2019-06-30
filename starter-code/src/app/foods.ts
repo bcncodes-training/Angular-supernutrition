@@ -1,3 +1,9 @@
+export class Food {
+  id: number;
+  name: string;
+  calories:number;
+  quantity:number;
+}
 const foods: Object[] = [
   {
     name: "Pizza",
