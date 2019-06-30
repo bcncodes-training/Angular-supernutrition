@@ -1,0 +1,13 @@
+<div *ngIf="food" id='container'>
+  <h3>{{food.name}} <small>details!</small></h3>
+  <section id='detail'>
+  <div>
+    <label>name:&emsp;</label>
+    <input [(ngModel)]="food.name" placeholder="name" />
+  </div>
+  <div>
+    <label>calories: </label>
+    <input [(ngModel)]="food.calories" type="number" placeholder="name" />
+  </div>
+  </section>
+</div>

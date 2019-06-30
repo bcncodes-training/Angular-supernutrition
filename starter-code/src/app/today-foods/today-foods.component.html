@@ -1,0 +1,21 @@
+<div *ngIf='findSum()>0' id='container'>
+<h3>
+  Today's Foods list
+</h3>
+<ul>
+  <li *ngFor="let food of foods | filterToday">
+    <div> {{food.name}}</div>
+    <div *ngIf="food.quantity <=1;else foodQty"> </div>
+    <div (change)=findSum()>{{food.calories*food.quantity}} cal.</div>
+    <ng-template #foodQty>
+      <div>
+        x{{food.quantity}}
+      </div>
+    </ng-template>
+  </li>
+</ul>
+<div id="totals">
+<label for="">Total Calories:</label>
+<label for="">{{ findSum() }} cal.</label>
+</div>
+</div>

@@ -1,0 +1,10 @@
+<p>
+  New product:
+</p>
+<div>
+    <label for="add_food_name">Name:</label>
+    <input id="add_food_name" type="text" #newName>
+    <label for="add_food_calories">Calories:</label>
+    <input id="add_food_calories" type="number"  #newCal>
+    <button (click)="addProduct(newName,newCal)">Add</button>
+</div>
