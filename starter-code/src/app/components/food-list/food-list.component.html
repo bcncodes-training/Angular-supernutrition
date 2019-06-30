@@ -1,0 +1,74 @@
+<main class="container">
+
+  <section class="my-3">
+
+    <div class="row">
+        <div class="col-5">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-search"></i></div>
+              </div>
+              <input type="text" class="form-control" placeholder="Search food" name="searchFood" [(ngModel)]="searchFood" #searchFoodForm="ngModel" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-5 my-3">
+            <button (click)="onClickShowForm()" class="btn btn-primary">Add food</button>
+        </div>
+    </div>
+
+  </section>
+
+  <section class="row">
+    <div class="col-5">
+
+      <article class="card mb-4 px-3" *ngFor="let food of foodList | search: searchFood">
+
+        <img [src]='food.image' [alt]='food.name' class="card-img-top mt-3" />
+
+        <div class="card-body">
+          <h5 class="card-title">{{ food.name }}</h5>
+          <p class="card-text">Calories: {{ food.calories }}</p>
+          <button (click)="addTodayList(food);" class="btn btn-primary">Add to list</button>
+        </div>
+
+      </article>
+
+    </div>
+
+    <div class="col-6">
+
+      <div *ngIf="showForm">
+
+          <form #formNewFood>
+              <div class="form-group">
+                <label for="formName">Name</label>
+                <input type="text" class="form-control" placeholder="Name" [(ngModel)]="newFood.name" name="name">
+              </div>
+              <div class="form-group">
+                <label for="Number of calories">Number of calories</label>
+                <input type="text" class="form-control" placeholder="Number of calories" [(ngModel)]="newFood.calories" name="calories">
+              </div>
+              <div class="form-group">
+                  <label for="formImage">Image</label>
+                  <input type="text" class="form-control" placeholder="Image" [(ngModel)]="newFood.image" name="image">
+              </div>
+              <button (click)="addNewFood();" class="btn btn-primary">Add food</button>
+            </form>
+        </div>
+
+        <div class="" *ngIf="showTodayList">
+          <h4>Menu for today:</h4>
+          <ul class="list-group" *ngFor="let foodTodayList of foodTodayList">
+            <li class="list-group-item mb-3">{{ foodTodayList.name }} - {{ foodTodayList.calories }} calories</li>
+          </ul>
+          <p class="mt-2">Total calories: <span></span></p>
+        </div>
+
+    </div>
+
+  </section>
+
+</main>
