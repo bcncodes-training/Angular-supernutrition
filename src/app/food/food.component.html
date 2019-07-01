@@ -1,0 +1,49 @@
+<div class='searchFormu'>
+  <h3>
+    {{title}}
+  </h3>
+  <label>name:
+      <input type='tex' [(ngModel)]="busca" placeholder="a buscar"/>
+  </label>
+  <p>{{busca}}</p>
+</div>
+
+<button (click)="addNewFood()">Add New Food</button>
+<ng-container *ngIf="viewForm">
+  <div class="addFormu">
+    <h5>{{titleForm}}</h5>
+    <label>{{newName}}
+      <input #vnewName type="text" [(ngModel)]="nameFoodNew" placeholder="Nombre">
+    </label>
+    <label>{{newCalories}}
+      <input #vnewCalories type="number" placeholder="Calories">
+    </label>
+    <label>{{newImg}}
+      <input #vnewImg class="imagen" type="text" placeholder="path\imagen">
+    </label>
+
+    <button (click)='saveNewFood(vnewName,vnewCalories,vnewImg)'>Add {{nameFoodNew}}</button>
+  </div>
+</ng-container>
+
+<h2>Foods</h2>
+
+<ul class="dispfoods">
+  <li *ngFor="let food of childMyFoods | filter:'name':busca">
+    <div class="food">
+      <img class="imgfood" [src]="food.image" alt="">
+      <p class="namefood">{{food.name}}<span class="caloriesfood"> {{food.calories}}</span></p>
+      <button (click)='addTodayFood($event)'>+</button>
+    </div>
+  </li>
+</ul>
+
+
+<ul class="dispTodayfoods">
+    <h4 class="dispTodayfoods">Today's Foods {{todayTotalCalories}}</h4>
+  <li class="dispTodayfoods" *ngFor="let todayfood of childMyTodayFood">
+    <p class="namefood dispTodayfoods-item">{{todayfood.name}}<span class="caloriesfood"> {{todayfood.calories}}</span></p>
+  </li>
+</ul>
+
+
