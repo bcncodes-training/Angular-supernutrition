@@ -1,0 +1,78 @@
+.container {
+  width: 80%;
+  min-width: 400px;
+  max-width: 1080px;
+  margin: auto;
+}
+
+.foods-list {
+
+  header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/*FOOD ELEMENT*/
+.food {
+
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+
+  >* {
+    border: 1px solid #000;
+    padding: 1em;
+    width: 50%;
+  }
+
+  header {
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+
+    }
+
+    img {
+      width: 150px;
+      text-align: center;
+    }
+  }
+
+  >section {
+
+  }
+}
+
+.floating-panel {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  scroll-behavior: unset;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(100,100,100,0.4);
+}
+
+.new-food-form {
+  padding: 1em;
+  border: 3px ridge #666;
+  background: #efefff;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
