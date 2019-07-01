@@ -1,0 +1,56 @@
+<div class="container">
+  <section class="foods-list">
+    <header>
+      <h2>Foods list</h2>
+      <button (click)="toggleNewPanelVisibility()">Add food</button>
+      <div class="form-group">
+        <label for="search">Search</label>
+        <input type="text" id="search" name="search" placeholder="Search by name" [(ngModel)]="search"/>
+      </div>
+    </header>
+    <article class="food" *ngFor="let food of foods | filter:'name':search; let i = index">
+      <header>
+        <h3>{{ food.name }}</h3>
+        <img [src]="food.image" [alt]="food.name"/>
+      </header>
+      <section>
+        <p><strong>Calories: </strong>{{ food.calories }}</p>
+        <p><strong>Amount: </strong>{{ food.quantity }}</p>
+        <button (click)="food.quantity=food.quantity+1; totalCalories = getTotalCalories()">+</button>
+      </section>
+    </article>
+  </section>
+
+  <section class="todays-foods">
+    <h2>Today's Foods</h2>
+    <ul>
+      <li *ngFor="let food of foods"><strong>{{ food.name }}</strong> x{{ food.quantity }}</li> <!--Completar el ngFor con esto y que funcione | filter:'quantity':'^[1-9][0-9](?:.[0-9]+)?$'; let i = index-->
+    </ul>
+    <p><strong>Total calories: </strong>{{ totalCalories }}</p>
+  </section>
+
+
+  <!--NEW FOOD FORM-->
+  <div class="floating-panel" *ngIf="newPanelIsVisible">
+    <form class=new-food-form>
+      <h2>New food</h2>
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" [(ngModel)]="newFood.name"/>
+      </div>
+      <div class="form-group">
+        <label>Calories</label>
+        <input type="text" name="calories" [(ngModel)]="newFood.calories"/>
+      </div>
+      <div class="form-group">
+        <label>Image URL</label>
+        <input type="text" name="image" [(ngModel)]="newFood.image"/>
+      </div>
+      <div class="form-group">
+          <button type="button" (click)="addFood(newFood)">Add food</button>
+          <button type="button" (click)="toggleNewPanelVisibility()">Close</button>
+      </div>
+    </form>
+  </div>
+
+</div>
