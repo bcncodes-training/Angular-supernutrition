@@ -1,0 +1,72 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.searchFormu {
+  width: 400px;
+  height: 125px;
+  border: 1px solid black;
+  margin: 5px;
+  text-align: center;
+}
+
+.addFormu {
+  width: 400px;
+  height: 175px;
+  border: 1px solid black;
+  margin: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  h5 {
+    margin: 10px;
+  }
+  label {
+    margin: 5px;
+  }
+  .imagen {
+    width: 70%;
+  }
+}
+
+ul.dispfoods li {
+  list-style-type: none;
+}
+
+.food {
+  width: 400px;
+  height: 180px;
+  border: 1px solid black;
+  margin: 5px;
+
+
+  .imgfood {
+    width: 180px;
+    height: 180px;
+    float: left;
+    margin-right: 10px;
+  }
+
+  .namefood {
+    font-weight: bold;
+  }
+}
+
+.caloriesfood {
+  font-size: 50%;
+  font-variant: small-caps;
+  color: green;
+}
+
+.dispfoods {
+  float: left;
+}
+
+.dispTodayfoods {
+  position: relative;
+  text-align: left;
+  margin-left: 300px;
+  .dispTodayfoods-item {
+    margin-left: initial;
+  }
+}
