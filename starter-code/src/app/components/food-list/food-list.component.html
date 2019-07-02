@@ -30,8 +30,13 @@
 
         <div class="card-body">
           <h5 class="card-title">{{ food.name }}</h5>
-          <p class="card-text">Calories: {{ food.calories }}</p>
-          <button (click)="addTodayList(food);" class="btn btn-primary">Add to list</button>
+          <p class="card-text">{{food.name}} x {{food.quantity}} ({{food.calories}} calories x {{food.quantity}} items)</p>
+
+          <form class="form-inline">
+            <input type='number' name='quantity' class="form-control mr-2" [(ngModel)]='food.quantity'>
+            <button type='button' (click)='addTodayList(food)' class="btn btn-primary">Add to today's list</button>
+          </form>
+
         </div>
 
       </article>
@@ -60,11 +65,11 @@
         </div>
 
         <div class="" *ngIf="showTodayList">
-          <h4>Menu for today:</h4>
-          <ul class="list-group" *ngFor="let foodTodayList of foodTodayList">
-            <li class="list-group-item mb-3">{{ foodTodayList.name }} - {{ foodTodayList.calories }} calories</li>
+          <h4 class="mb-3">Menu for today:</h4>
+          <ul class="list-group" *ngFor="let food of foodTodayList">
+            <li class="list-group-item mb-3">{{food.name}} x {{food.quantity}} ({{food.calories}} calories x {{food.quantity}} items)</li>
           </ul>
-          <p class="mt-2">Total calories: <span></span></p>
+          <p class="mt-2">Total calories: <span>{{ totalCalories }}</span></p>
         </div>
 
     </div>

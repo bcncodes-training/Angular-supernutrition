@@ -10,58 +10,46 @@ import { clearProviderOverrides } from '@angular/core/src/view';
 })
 export class FoodListComponent implements OnInit {
 
-  foodList: Array<any> = foods;
-  searchFood: string
+  //foodList: Array<any> = foods;
+  foodList: Array<any>;
+  searchFood: string;
   showForm: boolean = false;
   showTodayList: boolean = false;
   foodTodayList: Array<Food> = [];
+  totalCalories: number = 0;
 
   newFood = {
     name: '',
     calories: '',
-    image: ''
+    image: '',
+    quantity: ''
   };
 
   onClickShowForm(): void {
     this.showForm = !this.showForm;
   }
-/*
-  addNewFood(event: any, formNewFood: any) : void {
-
-    event.preventDefault();
-
-    this.foodList.push({
-      name: formNewFood[0].value,
-      calories: formNewFood[1].value,
-      image: formNewFood[2].value
-    })
-
-  }
-*/
 
   addNewFood() : void {
-
     this.foodList.push(this.newFood);
 
-    this.newFood = {
-      name: '',
-      calories: '',
-      image: ''
-    }
-
     this.showForm = false;
-
   }
 
-  addTodayList(foodItem: any) : void {
-
+  addTodayList(item: Food): void {
     this.showTodayList = true;
-
-    this.foodTodayList.push(foodItem);
+    this.foodTodayList.push(item);
+    this.totalCalories += item.calories * item.quantity;
   }
 
   constructor() {
-
+    this.foodList = foods;
+    this.searchFood = '';
+    this.newFood = {
+      name: '',
+      calories: '',
+      image: '',
+      quantity: ''
+    };
   }
 
   ngOnInit() {
