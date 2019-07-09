@@ -1,3 +1,137 @@
-<p>
-  food-list works!
-</p>
+<div class="container my-5">
+  <div class="row">
+    <!-- Search, Form & List -->
+    <div class="col-6">
+      <h2>Search</h2>
+      <!-- Search Input -->
+      <form class="form-inline my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          (keyup)="searchFood(searchText.value)"
+          #searchText
+        />
+        <!-- <button (click)="searchFood(searchText.value)" class="btn btn-outline-danger my-2 my-sm-0" type="button">
+                Search
+              </button> -->
+      </form>
+      <br />
+      <!-- Input new Food Form -->
+      <!-- Button -->
+      <button
+        (click)="showForm()"
+        class="btn btn-primary"
+        [disabled]="showFormButton_active"
+      >
+        Add New Food
+      </button>
+      <br />
+      <!-- Form new food -->
+      <form
+        *ngIf="form_Visible"
+        (ngSubmit)="addNewFood(formulario)"
+        #formulario="ngForm"
+        novalidate=""
+        class="col-12"
+      >
+        <div class="form-group">
+          <label for="foodName">Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="foodName"
+            aria-describedby="nameHelp"
+            placeholder="Food Name"
+            name="name"
+            required
+            minlength="3"
+            ngModel
+          />
+          <small id="nameHelp" class="form-text text-muted"
+            >Enter a new Food Name</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="CaloriesNumber">Calories</label>
+          <input
+            type="text"
+            class="form-control"
+            id="CaloriesNumber"
+            placeholder="Calories"
+            name="calories"
+            required
+            minlength="2"
+            ngModel
+          />
+        </div>
+        <div class="form-group">
+          <label for="ImageURL">Image</label>
+          <input
+            type="text"
+            class="form-control"
+            id="ImageURL"
+            placeholder="URL"
+            name="imageUrl"
+            required
+            minlength="5"
+            ngModel
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <br />
+      <!-- Search Food List -->
+      <div *ngFor="let food of searchFoodList" class="card mb-3 col-12">
+        <div class="row no-gutters">
+          <div class="col-md-7">
+            <img
+              [src]="food.image | checkImageUrl:'../../assets/img/noimage.png'"
+              class="card-img"
+              alt="..."
+            />
+          </div>
+          <div class="col-md-5">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ food.name }}
+              </h5>
+              <p class="card-text">
+                <small class="text-muted">calories : {{ food.calories }}</small>
+              </p>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <!-- <span class="input-group-text" id="basic-addon1">@</span> -->
+                  <button (click)="addMenuFood(food, foodUnits.value)" type="button" class="btn btn-primary">
+                    <span><i class="fa fa-plus"></i></span>
+                  </button>
+                </div>
+                <input
+                  #foodUnits
+                  type="text"
+                  class="form-control col-5"
+                  value="1"
+                  placeholder="Units"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search, Form & List -->
+    <div class="col-6">
+      <h2>Today's Food {{this.totalAmountCalories}} cal</h2>
+      <hr>
+      <ul class="list-group">
+          <li *ngFor="let food of menuList" class="list-group-item d-flex justify-content-between align-items-center">
+            {{food.name}}   {{food.calories}} cal
+            <span class="badge badge-primary badge-pill">{{food.quantity}}</span>
+          </li>
+        </ul>
+    </div>
+  </div>
+</div>
