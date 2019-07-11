@@ -1,3 +1,46 @@
-<p>
-  food-list works!
-</p>
+<h1 class=" p-4 bg-warning p-2 text-center">NUTRITION</h1>
+<div class="row m-5 p-5 border border-warning ">
+
+<div class="d-left col-sm-6 bg-secondary"  >
+  <h2 class="m-3" >Search food</h2>
+  <input type="text" class="form-control" placeholder="Search food" name="searchFood" [(ngModel)]="searchFood">
+
+  <h2 class="m-3 p-2">Food list</h2>
+  <div *ngFor="let food of foods | foodFinder: searchFood" class=" card m-2" >
+    <img class="" height=80 width=180 src="{{food.image}}" alt="{{food.name}}">
+    <div class="card-body">
+      <h5 class="card-title" name="name">{{food.name}}</h5>
+      <p class="card-text">{{food.calories}} Calories</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="d-right col-sm-6  ">
+
+
+<button type="button m-5 " (click)="showForm()" class="btn btn-warning col-sm-12">Add Food</button>
+
+<form class="" *ngIf="showAddForm">
+  <div class=" m-5 form-group">
+    <label for="foodName">Food Name</label>
+    <input type="text" class="form-control col-sm-12" name="name" [(ngModel)]="newFood.name" placeholder="Food name">
+
+    <label for="calories">Calories</label>
+    <input type="number"  min="0" class="form-control col-sm-12" name="calories" [(ngModel)]="newFood.calories" placeholder="Calores">
+
+
+    <label for="image">Image</label>
+    <input type="text" class="form-control col-sm-12" name="image" [(ngModel)]="newFood.image" placeholder="Image">
+
+
+    <label for="quantity">Quantity</label>
+    <input type="number" min="0" class="form-control col-sm-12" name="quantity" [(ngModel)]="newFood.quantity" placeholder="Quantity">
+ </div>
+
+
+
+  <button type="button" (click)="addFood()" class="btn btn-warning col-sm-12">Save</button>
+</form>
+</div>
+</div>
